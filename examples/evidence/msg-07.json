@@ -1,0 +1,15 @@
+{
+  "issuerId": "lawyer-17",
+  "keyId": "lawyer-17-2026",
+  "payload": {
+    "confirmedAt": "2026-10-06T10:12:00Z",
+    "documentSetVersion": 2,
+    "lawyerId": "lawyer-17",
+    "messageId": "msg-07",
+    "side": "buyer",
+    "transactionId": "sale-123",
+    "transactionVersion": 3,
+    "type": "paperwork_confirmed"
+  },
+  "signature": "cima4a6ltRR4sSwrJJm5ZIDUvaecdwaXyPiy/2c5F4Rp7Lt0VScsZDmZZCs09oGkA87RFHiUXSvzXiZ9UXWBDg=="
+}

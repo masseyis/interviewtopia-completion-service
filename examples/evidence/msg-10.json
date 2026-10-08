@@ -1,0 +1,16 @@
+{
+  "issuerId": "bank-7",
+  "keyId": "bank-7-2026",
+  "payload": {
+    "amountCents": 50000000,
+    "bankId": "bank-7",
+    "currency": "EUR",
+    "messageId": "msg-10",
+    "paymentReference": "payment-103",
+    "receivedAt": "2026-10-06T10:15:00Z",
+    "transactionId": "sale-123",
+    "transactionVersion": 3,
+    "type": "funds_received"
+  },
+  "signature": "z3Eh9QxbYjem7uziVN3jGNaoetUp/1VAMvyMlqncv26lwaeXLhRE+XoWd7XjXyTbXi3TcFS4Llx8/FVLfw3FDg=="
+}

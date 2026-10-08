@@ -10,21 +10,34 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/masseyis/interviewtopia-completion-service/internal/appconfig"
 	"github.com/masseyis/interviewtopia-completion-service/internal/httpapi"
+	"github.com/masseyis/interviewtopia-completion-service/pkg/evidence"
 )
 
 func main() {
 	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
 	defer stop()
 
-	addr := os.Getenv("HTTP_ADDR")
-	if addr == "" {
-		addr = "127.0.0.1:8080"
+	config := appconfig.FromEnv()
+	trustStoreJSON, err := os.ReadFile(config.TrustStorePath)
+	if err != nil {
+		slog.Error("read trust store", "error", err)
+		os.Exit(1)
+	}
+	trustStore, err := evidence.LoadTrustStore(trustStoreJSON)
+	if err != nil {
+		slog.Error("load trust store", "error", err)
+		os.Exit(1)
 	}
 
 	server := &http.Server{
-		Addr:              addr,
-		Handler:           httpapi.NewHandler(),
+		Addr: config.HTTPAddr,
+		Handler: httpapi.NewHandler(httpapi.Dependencies{
+			RegistryURL: config.RegistryURL,
+			TrustStore:  trustStore,
+			HTTPClient:  &http.Client{Timeout: 3 * time.Second},
+		}),
 		ReadHeaderTimeout: 5 * time.Second,
 		ReadTimeout:       10 * time.Second,
 		WriteTimeout:      10 * time.Second,
@@ -33,7 +46,7 @@ func main() {
 
 	errCh := make(chan error, 1)
 	go func() {
-		slog.Info("completion service listening", "address", addr)
+		slog.Info("completion service listening", "address", config.HTTPAddr)
 		errCh <- server.ListenAndServe()
 	}()
 
