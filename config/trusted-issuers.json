@@ -1,0 +1,29 @@
+{
+  "keys": [
+    {
+      "issuerId": "agent-9",
+      "keyId": "agent-9-2026",
+      "publicKeyBase64": "Q2IqumUoATXTU8/kVchPD1ptoiWsysMlrIlAWict3R8="
+    },
+    {
+      "issuerId": "bank-7",
+      "keyId": "bank-7-2026",
+      "publicKeyBase64": "TlzoOVPKp62ttuQqOz7bKMAMEIH2FRC3l6yxHJuur5o="
+    },
+    {
+      "issuerId": "lawyer-17",
+      "keyId": "lawyer-17-2026",
+      "publicKeyBase64": "yuvi1XJWV1TYMyK8fnXXapcDpyJEcGfiUvQbn1h2kL8="
+    },
+    {
+      "issuerId": "lawyer-31",
+      "keyId": "lawyer-31-2026",
+      "publicKeyBase64": "xaXvrEp1W4Ggo1BEFfpF4dkZ3m6kMa8PYCP3GfI4Uws="
+    },
+    {
+      "issuerId": "lawyer-99",
+      "keyId": "lawyer-99-2026",
+      "publicKeyBase64": "fWqn+ikrV8rY1WNfaFGtlfbLYPImlG6a8BLdq6p0GXY="
+    }
+  ]
+}

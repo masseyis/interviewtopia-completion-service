@@ -1,0 +1,15 @@
+{
+  "issuerId": "lawyer-31",
+  "keyId": "lawyer-31-2026",
+  "payload": {
+    "confirmedAt": "2026-10-06T10:12:00Z",
+    "documentSetVersion": 3,
+    "lawyerId": "lawyer-31",
+    "messageId": "msg-lawyer-seller",
+    "side": "seller",
+    "transactionId": "sale-123",
+    "transactionVersion": 3,
+    "type": "paperwork_confirmed"
+  },
+  "signature": "jlCS5GX/ZxOHQWtjx6HYHgVd8IVz9/No7Rcuo4M/sJGPtRNIQAbEDOgMysE42DulUgIbN8VgqXDUis0s3ZCzCg=="
+}

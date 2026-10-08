@@ -1,0 +1,14 @@
+{
+  "issuerId": "agent-9",
+  "keyId": "agent-9-2026",
+  "payload": {
+    "buyerId": "buyer-42",
+    "checkedAt": "2026-10-06T10:16:00Z",
+    "estateAgentId": "agent-9",
+    "messageId": "msg-identity-1",
+    "transactionId": "sale-123",
+    "transactionVersion": 3,
+    "type": "buyer_identity_confirmed"
+  },
+  "signature": "hNK4hHK9wHyYCS9njpVoGXFtCgVg1MQH5+d9SITw4Y6lT3I4IToL6pbpELIwyVe5fCzoFkQvckQ99cMW/kz6CQ=="
+}
