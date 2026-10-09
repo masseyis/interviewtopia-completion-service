@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"go.etcd.io/bbolt"
+
 	"github.com/masseyis/interviewtopia-completion-service/pkg/evidence"
 )
 
@@ -11,9 +13,10 @@ import (
 // tests. The starter health route does not use them; they are ready for the
 // exercise implementation.
 type Dependencies struct {
-	RegistryURL string
-	TrustStore  evidence.TrustStore
-	HTTPClient  *http.Client
+	RegistryBaseURL string
+	TrustStore      evidence.TrustStore
+	Database        *bbolt.DB
+	HTTPClient      *http.Client
 }
 
 type handler struct {

@@ -8,23 +8,26 @@ import "os"
 const (
 	defaultHTTPAddr       = "127.0.0.1:8080"
 	defaultTrustStorePath = "config/trusted-issuers.json"
+	defaultDatabasePath   = "completion.db"
 )
 
 // Config contains runtime values that the completion service may need.
-// RegistryURL is intentionally empty until the interviewer supplies it.
+// RegistryBaseURL is intentionally empty until the interviewer supplies it.
 type Config struct {
-	HTTPAddr       string
-	RegistryURL    string
-	TrustStorePath string
+	HTTPAddr        string
+	RegistryBaseURL string
+	TrustStorePath  string
+	DatabasePath    string
 }
 
 // FromEnv constructs the executable's configuration. Tests can construct a
 // Config directly instead of mutating the environment.
 func FromEnv() Config {
 	return Config{
-		HTTPAddr:       envOrDefault("HTTP_ADDR", defaultHTTPAddr),
-		RegistryURL:    os.Getenv("REGISTRY_URL"),
-		TrustStorePath: envOrDefault("TRUST_STORE_PATH", defaultTrustStorePath),
+		HTTPAddr:        envOrDefault("HTTP_ADDR", defaultHTTPAddr),
+		RegistryBaseURL: os.Getenv("REGISTRY_BASE_URL"),
+		TrustStorePath:  envOrDefault("TRUST_STORE_PATH", defaultTrustStorePath),
+		DatabasePath:    envOrDefault("COMPLETION_DB_PATH", defaultDatabasePath),
 	}
 }
 

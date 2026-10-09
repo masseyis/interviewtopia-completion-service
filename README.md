@@ -12,6 +12,7 @@ Requirements:
 
 - Go 1.23 or newer
 - Make, optionally
+- No external database. The starter uses embedded `bbolt` storage.
 
 Run the starter:
 
@@ -25,13 +26,20 @@ held in `internal/appconfig.Config` so tests can inject them directly:
 | Environment variable | Default |
 |---|---|
 | `HTTP_ADDR` | `127.0.0.1:8080` |
-| `REGISTRY_URL` | Empty until supplied during the exercise |
+| `REGISTRY_BASE_URL` | Empty until supplied during the exercise |
 | `TRUST_STORE_PATH` | `config/trusted-issuers.json` |
+| `COMPLETION_DB_PATH` | `completion.db` |
 
 At startup the executable loads that file and injects the resulting trust
-store, registry URL and HTTP client into `httpapi.Dependencies`. Tests can
-construct those dependencies directly without relying on files or environment
-variables.
+store, registry base URL, embedded database and HTTP client into
+`httpapi.Dependencies`. Tests can construct those dependencies directly
+without relying on environment variables. Use a path under `t.TempDir()` for
+test databases.
+
+`internal/storage.Open` handles opening and closing the embedded database. It
+does not choose buckets, records, indexes or transaction boundaries; those are
+application-design decisions. `TestDatabaseSurvivesCloseAndReopen` shows the
+basic persistence mechanism without implementing the exercise domain.
 
 Check the starter:
 
